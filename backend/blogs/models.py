@@ -7,7 +7,7 @@ class Blog(models.Model):
     date = models.DateField(auto_now_add=True)
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     text = models.CharField(max_length=100)
