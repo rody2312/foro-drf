@@ -11,9 +11,10 @@ const initialState = {
 };
 
 export const userSlice = createSlice({
-  name: "userLogin",
+  name: "user",
   initialState,
   reducers: {
+    //Login
     userLoginRequest: (state) => {
       state.loading = true;
     },
@@ -25,13 +26,34 @@ export const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+
+    //Register
+    userRegisterRequest: (state) => {
+      state.loading = true;
+    },
+    userRegisterSuccess: (state, action) => {
+      state.loading = false;
+      state.userInfo = action.payload;
+    },
+    userRegisterFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    
     userLogout: (state, action) => {
-      return;
+      return {};
     },
   },
 });
 
-export const { userLoginRequest, userLoginSuccess, userLoginFail, userLogout } =
-  userSlice.actions;
+export const {
+  userLoginRequest,
+  userLoginSuccess,
+  userLoginFail,
+  userLogout,
+  userRegisterRequest,
+  userRegisterSuccess,
+  userRegisterFail,
+} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { logout } from "../actions/userActions";
+import { useDispatch } from 'react-redux';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => (
+    dispatch(logout())
+  )
+
   return (
     <header className="p-5 bg-blue-500">
       <nav className="flex justify-between items-center">
@@ -18,6 +26,7 @@ const Header = () => {
           <Link to="/signup" className="text-white">
             Registrarse
           </Link>
+          <a onClick={logoutHandler} className="text-white cursor-pointer">Cerrar sesión</a>
         </div>
       </nav>
     </header>
